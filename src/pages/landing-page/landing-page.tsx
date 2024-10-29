@@ -1,6 +1,7 @@
 import React from "react";
 import StockList from "../../components/stock-list/StockList";
 import './landing-page.css'
+import Footer from "../../components/footer/Footer";
 
 type Props = {
     img: string,
@@ -10,15 +11,21 @@ type Props = {
 const LandingPage = () => {
   return (
   <div className="landingPage-Container">
-    <div className="landingPage-Elements">
-      <h1 className="Titles">Live Data Market</h1>
-      <p className="Paragraphs">Analyze currencies and stocks in real time, staying updated with the latest market trends</p>
-      <h2>Crypto</h2>
-      <StockList props={itemDataCoins}/>
-      <h2>Stocks</h2>
-      <StockList props={itemDataStock}/>
+    <div id="Center">
+      <div className="landingPage-Elements">
+
+        <h1 className="Titles">Live Data Market</h1>
+        <p className="Paragraphs">Analyze currencies and stocks in real time, staying updated with the latest market trends</p>
+        <h2>Crypto</h2>
+        <StockList props={itemDataCoins}/>
+        <h2>Stocks</h2>
+        <StockList props={itemDataStock}/>
+      </div>
+      
     </div>
+    <Footer/>
   </div>
+
 )
 };
 
