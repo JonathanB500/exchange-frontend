@@ -13,7 +13,7 @@ function App() {
     <div>
       <Routes>
         <Route path="/home" element={LayoutDashboard(Home)} />
-        <Route path="/landing-page" element={LayoutDashboard(LandingPage)} />
+        <Route path="/landing-page" element={LandingPage()} />
       </Routes>
     </div>
   );
