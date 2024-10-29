@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './StockList.css'
 import BasicImage from '../basic-image/BasicImage';
+import { Avatar } from '@mui/material';
 type MarketData = {
     alt: string,
     src: string,
@@ -34,7 +35,7 @@ export default function StockList({props}: Props) {
                 <tr key={prop.symbol}> 
 
                   <td  id='basicImage'>
-                    <BasicImage alt={prop.alt} src={prop.src} />
+                    <Avatar alt={prop.alt} src={prop.src} className='Avatars'/>
                   </td>
                   <td >
                     <a href="/home">
