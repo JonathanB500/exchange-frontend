@@ -4,3 +4,10 @@
 .Paragraphs {
     text-align: center;
 }
+.landingPage-Elements{
+    width: 60rem;
+}
+.landingPage-Container{
+    display: flex;
+    justify-content: center;
+}

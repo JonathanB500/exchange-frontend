@@ -9,12 +9,17 @@ type Props = {
 };
 const LandingPage = () => {
   return (
-  <div>
-    <h1 className="Titles">Live Data Market</h1>
-    <p className="Paragraphs">Analyze currencies and stocks in real time, staying updated with the latest market trends</p>
-    <StockList props={itemDataCoins}/>
-    <StockList props={itemDataStock}/>
-  </div>)
+  <div className="landingPage-Container">
+    <div className="landingPage-Elements">
+      <h1 className="Titles">Live Data Market</h1>
+      <p className="Paragraphs">Analyze currencies and stocks in real time, staying updated with the latest market trends</p>
+      <h2>Crypto</h2>
+      <StockList props={itemDataCoins}/>
+      <h2>Stocks</h2>
+      <StockList props={itemDataStock}/>
+    </div>
+  </div>
+)
 };
 
 export default LandingPage;
