@@ -1,14 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import StockList from "../../components/stock-list/StockList";
 import './landing-page.css'
 import Footer from "../../components/footer/Footer";
 
-type Props = {
-    img: string,
-    title: string,
-    author: string
+
+type Coin = {
+  src: string;
+  alt: string;
+  symbol: string;
+  price: number;
+  volume: number;
+  coinMarketCap: number;
 };
+
+type Stock = {
+  src: string;
+  alt: string;
+  symbol: string;
+  price: number;
+  volume: number;
+  coinMarketCap: number;
+};
+
+
+
+
+
+
+
 const LandingPage = () => {
+  const [coins, setCoins] = useState<Coin[]>([]);
+  const [stocks, setStocks] = useState<Stock[]>([]);
+
+ useEffect(() => {
+    const fetchData = () => {
+      setCoins(getCoins());
+      setStocks(getStocks());
+    };
+
+    fetchData();
+
+    const intervalId = setInterval(fetchData, 10000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
   <div className="landingPage-Container">
     <div id="Center">
@@ -17,9 +53,9 @@ const LandingPage = () => {
         <h1 className="Titles">Live Data Market</h1>
         <p className="Paragraphs">Analyze currencies and stocks in real time, staying updated with the latest market trends</p>
         <h2>Crypto</h2>
-        <StockList props={itemDataCoins}/>
+        <StockList props={coins}/>
         <h2>Stocks</h2>
-        <StockList props={itemDataStock}/>
+        <StockList props={stocks}/>
       </div>
       
     </div>
@@ -31,8 +67,9 @@ const LandingPage = () => {
 
 export default LandingPage;
 
-
-const itemDataCoins = [
+const getCoins = () =>{
+  console.log("Call!");
+  const itemDataCoins = [
     {
       src: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
       alt: 'Breakfast',
@@ -58,7 +95,10 @@ const itemDataCoins = [
       coinMarketCap: 13298498438923
     },
   ];
+  return itemDataCoins;
+}
 
+const getStocks = () =>{
   const itemDataStock = [
     {
       src: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
@@ -85,3 +125,8 @@ const itemDataCoins = [
       coinMarketCap: 13298498438923
     },
   ];
+
+  return itemDataStock;
+}
+
+
