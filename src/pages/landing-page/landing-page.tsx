@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import StockList from "../../components/stock-list/StockList";
 import './landing-page.css'
 import Footer from "../../components/footer/Footer";
+import Carousel from "../../components/carousel/Carousel";
 
 
 type Coin = {
@@ -47,6 +48,12 @@ const LandingPage = () => {
 
   return (
   <div className="landingPage-Container">
+    <div className="Carousel">
+      <div id="Carousel">
+        <Carousel></Carousel>
+      </div>
+    </div>
+
     <div id="Center">
       <div className="landingPage-Elements">
 

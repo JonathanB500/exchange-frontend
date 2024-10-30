@@ -5,7 +5,7 @@
     text-align: center;
 }
 .landingPage-Elements{
-    width: 60rem;
+    width: 65rem;
 }
 #Center{
     display: flex;
@@ -14,4 +14,12 @@
 }
 .landingPage-Container{
     height: 100%;
+}
+#Carousel{
+    width: 65rem;
+    margin-bottom: 4rem;
+}
+.Carousel{
+    display: flex;
+    justify-content: center;
 }
