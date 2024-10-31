@@ -1,12 +1,4 @@
-import {
-  AppBar,
-  Box,
-  Button,
-  IconButton,
-  Toolbar,
-  Typography,
-} from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import SideMenu from "../sidemenu";
 
 type Props = {};
