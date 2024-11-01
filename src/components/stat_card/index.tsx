@@ -8,6 +8,7 @@ import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { SparkLineChart } from "@mui/x-charts/SparkLineChart";
 import { areaElementClasses } from "@mui/x-charts/LineChart";
+import { getDaysValues } from "../../utils/getDaysValues";
 
 export type StatCardProps = {
   title: string;
@@ -32,12 +33,12 @@ function AreaGradient({ color, id }: { color: string; id: string }) {
   );
 }
 
-function getDaysValues(data: any[]) {
-  return data.map(
-    (i) =>
-      `${i.date.toLocaleString("en-EN", { month: "long" })} ${i.date.getDate()}`
-  );
-}
+// function getDaysValues(data: any[]) {
+//   return data.map(
+//     (i) =>
+//       `${i.date.toLocaleString("en-EN", { month: "long" })} ${i.date.getDate()}`
+//   );
+// }
 
 function calcTrend(data: any[], field: string) {
   const value = ((data[6][field] - data[0][field]) * 100) / data[5][field];

@@ -1,6 +1,8 @@
 import Grid from "@mui/material/Grid2";
 import StatCard from "../../components/stat_card";
 import "./styles.css";
+import Chart from "../../components/chart";
+import { Box } from "@mui/material";
 
 type Props = {};
 
@@ -53,20 +55,20 @@ const Home = (props: Props) => {
     ],
   };
 
-  const price = String(stockData.history[6].price);
-  const data = stockData.history.map((i) => i.price);
-  const month = stockData.history[6].date.getMonth();
-
-  console.log(price, data, month);
-
   return (
     <div className="home">
       <Grid
         container
         spacing={0}
-        sx={{ justifyContent: "center", marginY: "50px", gap: "50px" }}
+        sx={{
+          width: "90%",
+          justifyContent: "space-between",
+          margin: "0 auto",
+          marginY: "50px",
+          gap: "30px",
+        }}
       >
-        <Grid size={{ xs: 9, md: 3 }}>
+        <Grid size={{ xs: 12, md: 3 }}>
           <StatCard
             title={`Price | ${stockData.history[6].date.toLocaleString(
               "en-EN",
@@ -80,7 +82,7 @@ const Home = (props: Props) => {
             field={"price"}
           />
         </Grid>
-        <Grid size={{ xs: 9, md: 3 }}>
+        <Grid size={{ xs: 12, md: 3 }}>
           <StatCard
             title={`Volume | ${stockData.history[6].date.toLocaleString(
               "en-EN",
@@ -94,7 +96,7 @@ const Home = (props: Props) => {
             field={"volume"}
           />
         </Grid>
-        <Grid size={{ xs: 9, md: 3 }}>
+        <Grid size={{ xs: 12, md: 3 }}>
           <StatCard
             title={`Coin Market Cap | ${stockData.history[6].date.toLocaleString(
               "en-EN",
@@ -109,6 +111,9 @@ const Home = (props: Props) => {
           />
         </Grid>
       </Grid>
+      <Box component={"section"} sx={{ width: "90%", margin: "20px auto" }}>
+        <Chart data={stockData.history} />
+      </Box>
     </div>
   );
 };
