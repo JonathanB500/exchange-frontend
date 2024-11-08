@@ -5,10 +5,10 @@ import { Avatar } from '@mui/material';
 type MarketData = {
     alt: string,
     src: string,
-    symbol: string,
+    symbol_id: string,
     price: number,
     volume: number,
-    coinMarketCap:number
+    coin_market_cap:number
 };
 
 type Props = {
@@ -32,14 +32,14 @@ export default function StockList({props}: Props) {
             {props.map(prop => {
               return(
 
-                <tr key={prop.symbol}> 
+                <tr key={prop.symbol_id}> 
 
                   <td  id='basicImage'>
                     <Avatar alt={prop.alt} src={prop.src} className='Avatars'/>
                   </td>
                   <td >
                     <a href="/home">
-                      {prop.symbol}
+                      {prop.symbol_id}
                     </a>
                   </td>
                   <td>
@@ -49,7 +49,7 @@ export default function StockList({props}: Props) {
                       ${prop.volume}
                   </td>
                   <td>
-                      ${prop.coinMarketCap}
+                      ${prop.coin_market_cap}
                   </td>
  
                 </tr>
