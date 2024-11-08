@@ -1,6 +1,6 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Home from "../pages/home";
+import Details from "../pages/details";
 import LayoutDashboard from "../layouts/LayoutDashboard";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -12,8 +12,8 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/home" element={LayoutDashboard(Home)} />
-        <Route path="/landing-page" element={LandingPage()} />
+        <Route path="/details/:symbol" element={LayoutDashboard(Details)} />
+        <Route path="/landing-page" element={LayoutDashboard(LandingPage)} />
       </Routes>
     </div>
   );
