@@ -33,13 +33,6 @@ function AreaGradient({ color, id }: { color: string; id: string }) {
   );
 }
 
-// function getDaysValues(data: any[]) {
-//   return data.map(
-//     (i) =>
-//       `${i.date.toLocaleString("en-EN", { month: "long" })} ${i.date.getDate()}`
-//   );
-// }
-
 function calcTrend(data: any[], field: string) {
   const value = ((data[6][field] - data[0][field]) * 100) / data[5][field];
   const type = value < 0 ? "down" : "up";
@@ -60,6 +53,8 @@ export default function StatCard({
   const daysValue = getDaysValues(data);
   const dataValues = getValues(data, field);
   const trend = calcTrend(data, field);
+
+  console.log(daysValue);
 
   const trendColors = {
     up:

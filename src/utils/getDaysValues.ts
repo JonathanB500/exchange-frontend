@@ -1,8 +1,9 @@
 export const getDaysValues = (data: any[]) => {
+  console.log(data);
   return data.map(
     (i) =>
-      `${i.date.toLocaleString("en-EN", {
+      `${new Date(i.updated_at).toLocaleString("en-EN", {
         month: "long",
-      })} ${i.date.getDate()}`
+      })} ${new Date(i.updated_at).getDate()}`
   );
 };
