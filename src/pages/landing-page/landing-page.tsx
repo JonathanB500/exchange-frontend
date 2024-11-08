@@ -1,50 +1,9 @@
-import React, { useEffect, useState } from "react";
 import StockList from "../../components/stock-list/StockList";
 import './landing-page.css'
 import Footer from "../../components/footer/Footer";
 import Carousel from "../../components/carousel/Carousel";
 
-
-type Coin = {
-  src: string;
-  alt: string;
-  symbol: string;
-  price: number;
-  volume: number;
-  coinMarketCap: number;
-};
-
-type Stock = {
-  src: string;
-  alt: string;
-  symbol: string;
-  price: number;
-  volume: number;
-  coinMarketCap: number;
-};
-
-
-
-
-
-
-
 const LandingPage = () => {
-  const [coins, setCoins] = useState<Coin[]>([]);
-  const [stocks, setStocks] = useState<Stock[]>([]);
-
- useEffect(() => {
-    const fetchData = () => {
-      setCoins(getCoins());
-      setStocks(getStocks());
-    };
-
-    fetchData();
-
-    const intervalId = setInterval(fetchData, 10000);
-
-    return () => clearInterval(intervalId);
-  }, []);
 
   return (
   <div className="landingPage-Container">
@@ -60,9 +19,9 @@ const LandingPage = () => {
         <h1 className="Titles">Live Data Market</h1>
         <p className="Paragraphs">Analyze currencies and stocks in real time, staying updated with the latest market trends</p>
         <h2>Crypto</h2>
-        <StockList props={coins}/>
+        <StockList props={getCoins()}/>
         <h2>Stocks</h2>
-        <StockList props={stocks}/>
+        <StockList props={getStocks()}/>
       </div>
       
     </div>
