@@ -38,7 +38,7 @@ export default function StockList({props}: Props) {
                     <Avatar alt={prop.alt} src={prop.src} className='Avatars'/>
                   </td>
                   <td >
-                    <a href="/home">
+                    <a href={"/details/"+ prop.symbol_id}>
                       {prop.symbol_id}
                     </a>
                   </td>
