@@ -6,12 +6,14 @@ import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
+import LandingPage from "../pages/landing-page/landing-page";
 
 function App() {
   return (
     <div>
       <Routes>
         <Route path="/home" element={LayoutDashboard(Home)} />
+        <Route path="/landing-page" element={LandingPage()} />
       </Routes>
     </div>
   );
