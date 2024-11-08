@@ -1,0 +1,14 @@
+#Rights {
+    padding-top: 5px;
+    background-color: grey;
+    height: 2rem;
+    margin: 0%;
+}
+.Footer-container{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
