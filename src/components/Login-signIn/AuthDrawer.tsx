@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronLeftOutlined } from '@mui/icons-material';
+import { ChevronLeftOutlined, Close } from '@mui/icons-material';
 import { DialogTitle, Button, Drawer, IconButton, Box } from '@mui/material';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
@@ -31,17 +31,17 @@ const AuthDrawer: React.FC = () => {
 
   return (
     <div>
-      <Button onClick={() => { setIsLogin(true); handleDrawerOpen(); }}>
-        Open Login
+      <Button sx={{ color: "#fff"  }} onClick={() => { setIsLogin(true); handleDrawerOpen(); }}>
+        Login
       </Button>
-      <Button onClick={() => { setIsLogin(false); handleDrawerOpen(); }}>
-        Open Sign Up
+      <Button sx={{ color: "#fff" }} onClick={() => { setIsLogin(false); handleDrawerOpen(); }}>
+        Sign Up
       </Button>
 
-      <Drawer open={open} onClose={handleDrawerClose}>
+      <Drawer open={open} onClose={handleDrawerClose} anchor='right'>
         <Box sx={{ width: 300 }}>
           <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftOutlined />
+            <Close/>
           </IconButton>
           <DialogTitle>{isLogin ? 'Login' : 'Sign Up'}</DialogTitle>
           {isLogin ? (
