@@ -1,0 +1,25 @@
+.Titles {
+    text-align: center;
+}
+.Paragraphs {
+    text-align: center;
+}
+.landingPage-Elements{
+    width: 65rem;
+}
+#Center{
+    display: flex;
+    justify-content: center;
+    min-height: 100%;
+}
+.landingPage-Container{
+    height: 100%;
+}
+#Carousel{
+    width: 65rem;
+    margin-bottom: 4rem;
+}
+.Carousel{
+    display: flex;
+    justify-content: center;
+}
