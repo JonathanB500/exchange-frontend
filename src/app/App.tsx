@@ -16,7 +16,7 @@ function App() {
           path="/details/:type/:symbol"
           element={LayoutDashboard(Details)}
         />
-        <Route path="/landing-page" element={LayoutDashboard(LandingPage)} />
+        <Route path="/" element={LayoutDashboard(LandingPage)} />
       </Routes>
     </div>
   );
