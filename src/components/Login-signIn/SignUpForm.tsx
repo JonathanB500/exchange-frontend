@@ -1,24 +1,33 @@
-// SignUpForm.tsx
-import React from 'react';
-import { Button, TextField, Typography, Box } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, TextField, Button, Typography } from '@mui/material';
+import axios from 'axios';
 
-interface SignUpFormProps {
+type SignUpFormProps = {
   onSubmit: (data: any) => void;
   switchToLogin: () => void;
-}
+};
 
 const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit, switchToLogin }) => {
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [confirmPassword, setConfirmPassword] = React.useState('');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleSignUp = () => {
-    onSubmit({ name, email, password, confirmPassword });
-    setName('');
-    setEmail('');
-    setPassword('');
-    setConfirmPassword('');
+  const handleSignUp = async () => {
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/api/auth/signup/', {
+        username: name,
+        email,
+        password,
+      });
+      alert('User created successfully!');
+      onSubmit(response.data); // Close the drawer after success
+    } catch (error) {
+      if (error instanceof Error) {
+        alert('Error during sign up: ' + error.message);
+      } else {
+        alert('An unknown error occurred');
+      }
+    }
   };
 
   return (
@@ -44,14 +53,6 @@ const SignUpForm: React.FC<SignUpFormProps> = ({ onSubmit, switchToLogin }) => {
         margin="normal"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-      />
-      <TextField
-        label="Confirm Password"
-        type="password"
-        fullWidth
-        margin="normal"
-        value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
       />
       <Button variant="contained" color="primary" fullWidth onClick={handleSignUp}>
         Sign Up

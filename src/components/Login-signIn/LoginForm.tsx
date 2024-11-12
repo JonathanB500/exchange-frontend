@@ -1,30 +1,45 @@
-// LoginForm.tsx
-import React from 'react';
-import { Button, TextField, Typography, Box } from '@mui/material';
+import React, { useState } from 'react';
+import { Box, TextField, Button, Typography } from '@mui/material';
+import axios from 'axios';
 
-interface LoginFormProps {
+type LoginFormProps = {
   onSubmit: (data: any) => void;
   switchToSignUp: () => void;
-}
+};
 
 const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, switchToSignUp }) => {
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    onSubmit({ email, password });
-    setEmail('');
-    setPassword('');
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://127.0.0.1:8000/api/auth/login/', {
+        username,
+        password,
+      });
+      const { token, username: user } = response.data;
+      // Save the token in localStorage or sessionStorage
+      localStorage.setItem('authToken', token);
+      localStorage.setItem('username', user);
+      alert('Login successful!');
+      onSubmit(response.data); // To close the drawer after successful login
+    } catch (error) {
+      if (error instanceof Error) {
+        alert('Error during login: ' + error.message);
+      } else {
+        alert('An unknown error occurred');
+      }
+    }
   };
 
   return (
     <Box sx={{ padding: 2 }}>
       <TextField
-        label="Email"
+        label="Username"
         fullWidth
         margin="normal"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
       />
       <TextField
         label="Password"
@@ -36,9 +51,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, switchToSignUp }) => {
       />
       <Button variant="contained" color="primary" fullWidth onClick={handleLogin}>
         Log In
-      </Button>
-      <Button variant="text" fullWidth onClick={() => alert('Redirect to password recovery')}>
-        Forgot your password?
       </Button>
       <Typography variant="body2" textAlign="center" sx={{ marginTop: 2 }}>
         Don’t have an account?{' '}

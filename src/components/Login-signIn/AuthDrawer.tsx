@@ -1,17 +1,12 @@
-// AuthDrawer.tsx
-import React from 'react';
+import React, { useState } from 'react';
 import { ChevronLeftOutlined } from '@mui/icons-material';
 import { DialogTitle, Button, Drawer, IconButton, Box } from '@mui/material';
 import LoginForm from './LoginForm';
 import SignUpForm from './SignUpForm';
 
 const AuthDrawer: React.FC = () => {
-  const [open, setOpen] = React.useState(false);
-  const [isLogin, setIsLogin] = React.useState(true); // Toggle between login and sign-up
-
-  const toggleDrawer = (newOpen: boolean) => () => {
-    setOpen(newOpen);
-  };
+  const [open, setOpen] = useState(false);
+  const [isLogin, setIsLogin] = useState(true); // Toggle between login and sign-up
 
   const handleDrawerClose = () => {
     setOpen(false);
@@ -23,12 +18,12 @@ const AuthDrawer: React.FC = () => {
 
   const handleLoginSubmit = (data: any) => {
     console.log('Login Data:', data);
-    setOpen(false);
+    setOpen(false); // Close the drawer after login
   };
 
   const handleSignUpSubmit = (data: any) => {
     console.log('Sign Up Data:', data);
-    setOpen(false);
+    setOpen(false); // Close the drawer after sign-up
   };
 
   const switchToSignUp = () => setIsLogin(false);
@@ -43,7 +38,7 @@ const AuthDrawer: React.FC = () => {
         Open Sign Up
       </Button>
 
-      <Drawer open={open} onClose={toggleDrawer(false)}>
+      <Drawer open={open} onClose={handleDrawerClose}>
         <Box sx={{ width: 300 }}>
           <IconButton onClick={handleDrawerClose}>
             <ChevronLeftOutlined />
