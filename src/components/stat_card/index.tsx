@@ -54,8 +54,6 @@ export default function StatCard({
   const dataValues = getValues(data, field);
   const trend = calcTrend(data, field);
 
-  console.log(daysValue);
-
   const trendColors = {
     up:
       theme.palette.mode === "light"
