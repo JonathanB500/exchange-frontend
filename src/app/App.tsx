@@ -12,7 +12,10 @@ function App() {
   return (
     <div>
       <Routes>
-        <Route path="/details/:symbol" element={LayoutDashboard(Details)} />
+        <Route
+          path="/details/:type/:symbol"
+          element={LayoutDashboard(Details)}
+        />
         <Route path="/landing-page" element={LayoutDashboard(LandingPage)} />
       </Routes>
     </div>

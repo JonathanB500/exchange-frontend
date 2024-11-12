@@ -6,32 +6,39 @@ import { Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import { getStockHistory } from "../../services/Stocks";
 import { useParams } from "react-router-dom";
+import { getCryptoHistory } from "../../services/Crypto";
 
 type Props = {};
 
 const Details = (props: Props) => {
-  const { symbol } = useParams();
+  const { type, symbol } = useParams();
 
-  const [stockHistory, setStockHistory] = useState<any>([]);
+  const [itemHistory, setItemHistory] = useState<any>([]);
 
   const getHistory = async (symbol: string | undefined) => {
     try {
-      const response: any = await getStockHistory(symbol ?? "");
-      setStockHistory(response.data);
+      let response: any = null;
+      if (type === "stock") {
+        response = await getStockHistory(symbol ?? "");
+      } else {
+        response = await getCryptoHistory(symbol ?? "");
+      }
+      setItemHistory(response.data);
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(() => {
+    console.log(type);
     getHistory(symbol);
   }, [symbol]);
 
   useEffect(() => {
-    console.log(stockHistory);
-  }, [stockHistory]);
+    console.log(itemHistory);
+  }, [itemHistory]);
 
-  if (stockHistory.length === 0) {
+  if (itemHistory.length === 0) {
     return <h3>Loading...</h3>;
   }
 
@@ -51,45 +58,45 @@ const Details = (props: Props) => {
         <Grid size={{ xs: 12, md: 3 }}>
           <StatCard
             title={`Price | ${new Date(
-              stockHistory[6].updated_at
+              itemHistory[6].updated_at
             ).toLocaleString("en-EN", {
               month: "long",
-            })} - ${new Date(stockHistory[6].updated_at).getDate()}`}
-            value={String(stockHistory[6].price)}
+            })} - ${new Date(itemHistory[6].updated_at).getDate()}`}
+            value={String(itemHistory[6].price)}
             interval={"Last 7 days"}
-            data={stockHistory}
+            data={itemHistory}
             field={"price"}
           />
         </Grid>
         <Grid size={{ xs: 12, md: 3 }}>
           <StatCard
             title={`Volume | ${new Date(
-              stockHistory[6].updated_at
+              itemHistory[6].updated_at
             ).toLocaleString("en-EN", {
               month: "long",
-            })} - ${new Date(stockHistory[6].updated_at).getDate()}`}
-            value={String(stockHistory[6].volume)}
+            })} - ${new Date(itemHistory[6].updated_at).getDate()}`}
+            value={String(itemHistory[6].volume)}
             interval={"Last 7 days"}
-            data={stockHistory}
+            data={itemHistory}
             field={"volume"}
           />
         </Grid>
         <Grid size={{ xs: 12, md: 3 }}>
           <StatCard
             title={`Coin Market Cap | ${new Date(
-              stockHistory[6].updated_at
+              itemHistory[6].updated_at
             ).toLocaleString("en-EN", {
               month: "long",
-            })} - ${new Date(stockHistory[6].updated_at).getDate()}`}
-            value={String(stockHistory[6].price)}
+            })} - ${new Date(itemHistory[6].updated_at).getDate()}`}
+            value={String(itemHistory[6].price)}
             interval={"Last 7 days"}
-            data={stockHistory}
+            data={itemHistory}
             field={"coin_market_cap"}
           />
         </Grid>
       </Grid>
       <Box component={"section"} sx={{ width: "90%", margin: "20px auto" }}>
-        <Chart data={stockHistory} />
+        <Chart data={itemHistory} />
       </Box>
     </div>
   );
