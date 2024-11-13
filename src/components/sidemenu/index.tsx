@@ -14,7 +14,7 @@ import FmdGoodIcon from "@mui/icons-material/FmdGood";
 import EventAvailableIcon from "@mui/icons-material/EventAvailable";
 import SettingsIcon from "@mui/icons-material/Settings";
 import CloseIcon from "@mui/icons-material/Close";
-import WalletIcon from '@mui/icons-material/Wallet';
+import WalletIcon from "@mui/icons-material/Wallet";
 import { Logout } from "@mui/icons-material";
 import React, { ReactNode, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -34,13 +34,7 @@ const SideMenu = (props: Props) => {
   const routesBlockForGuest = ["/saved-places"];
 
   const options: menuOption[] = [
-    { Name: "Home", Icon: <HomeIcon />, page: "/home" },
-    {
-      Name: "Saved places",
-      Icon: <FmdGoodIcon />,
-      page: "/saved-places",
-    },
-    { Name: "Scenes", Icon: <EventAvailableIcon />, page: "/scenes" },
+    { Name: "Home", Icon: <HomeIcon />, page: "/" },
     { Name: "Wallet", Icon: <WalletIcon />, page: "/wallet" },
   ];
 
