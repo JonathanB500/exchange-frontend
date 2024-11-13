@@ -7,6 +7,7 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import LandingPage from "../pages/landing-page/landing-page";
+import WalletPage from "../pages/wallet-page/wallet-page";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           element={LayoutDashboard(Details)}
         />
         <Route path="/" element={LayoutDashboard(LandingPage)} />
+        <Route path="/wallet" element={LayoutDashboard(WalletPage)} />
       </Routes>
     </div>
   );
