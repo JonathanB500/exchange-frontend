@@ -1,5 +1,6 @@
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import SideMenu from "../sidemenu";
+import AuthDrawer from "../Login-signIn/AuthDrawer";
 
 type Props = {};
 
@@ -12,7 +13,7 @@ const Navbar = (props: Props) => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             ExchangeApp
           </Typography>
-          <Button color="inherit">Login</Button>
+          <AuthDrawer/>
         </Toolbar>
       </AppBar>
     </Box>
