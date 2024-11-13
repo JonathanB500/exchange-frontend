@@ -3,11 +3,11 @@ import { Box, TextField, Button, Typography } from '@mui/material';
 import axios from 'axios';
 
 type LoginFormProps = {
-  onSubmit: (data: any) => void;
+  onSubmit: (data: {username:string , token: string}) => void;
   switchToSignUp: () => void;
 };
 
-const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, switchToSignUp }) => {
+const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, switchToSignUp}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -22,10 +22,13 @@ const LoginForm: React.FC<LoginFormProps> = ({ onSubmit, switchToSignUp }) => {
       localStorage.setItem('authToken', token);
       localStorage.setItem('username', user);
       alert('Login successful!');
-      onSubmit(response.data); // To close the drawer after successful login
+      onSubmit({
+        token: token,
+        username: user
+      }); // To close the drawer after successful login
     } catch (error) {
       if (error instanceof Error) {
-        alert('Error during login: ' + error.message);
+        alert('Error during login: Incorrect username or password' );
       } else {
         alert('An unknown error occurred');
       }
