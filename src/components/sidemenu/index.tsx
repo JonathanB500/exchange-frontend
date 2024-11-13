@@ -125,17 +125,7 @@ const SideMenu = (props: Props) => {
           </Box>
           <OptionsList />
         </Box>
-        <ListItem disablePadding>
-          <ListItemButton
-            sx={{ padding: "1rem", "&:hover": { backgroundColor: "#222" } }}
-            onClick={() => {}}
-          >
-            <ListItemIcon sx={{ color: "#fff" }}>
-              <Logout />
-            </ListItemIcon>
-            <ListItemText primary={"Logout"} sx={{ color: "#fff" }} />
-          </ListItemButton>
-        </ListItem>
+        <ListItem disablePadding></ListItem>
       </Drawer>
     </Box>
   );
